@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Оформи подписку за 1₽ и выиграй iPhone 16 Pro! Супер лотерея с крутыми призами!">
+    <title>СУПЕР ЛОТЕРЕЯ - iPhone 16 Pro за 1₽</title>
+    <link rel="icon" type="image/x-icon" href="https://static.photos/red/200x200/1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Деловые стили шрифтов */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-logo, .cta-button, .subscription-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+        
+        p, .text-gray-300, .text-white {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .neon-glow {
+            box-shadow: 
+                0 0 5px #ff6b6b,
+                0 0 10px #ff6b6b,
+                0 0 15px #ff6b6b,
+                0 0 20px #ff6b6b,
+                0 0 35px #ff6b6b,
+                0 0 40px #ff6b6b;
+            animation: neon-pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neon-pulse {
+            from {
+                box-shadow: 
+                    0 0 5px #ff6b6b,
+                    0 0 10px #ff6b6b,
+                    0 0 15px #ff6b6b,
+                    0 0 20px #ff6b6b,
+                    0 0 35px #ff6b6b,
+                    0 0 40px #ff6b6b;
+            }
+            to {
+                box-shadow: 
+                    0 0 2px #ff6b6b,
+                    0 0 5px #ff6b6b,
+                    0 0 8px #ff6b6b,
+                    0 0 12px #ff6b6b,
+                    0 0 18px #ff6b6b,
+                    0 0 25px #ff6b6b;
+            }
+        }
+        
+        .prize-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .prize-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,107,107,0.3);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .subscription-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff3838 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subscription-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(255,107,107,0.4);
+        }
+        
+        .subscription-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .subscription-btn:hover::before {
+            left: 100%;
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: particle-float 6s linear infinite;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, rgba(255,107,107,0.2) 0%, rgba(238,90,36,0.2) 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timer-digit {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            font-size: 2rem;
+            font-weight: 900;
+            padding: 15px 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        /* Real iPhone Showcase Styles */
+        .iphone-real-showcase {
+            position: relative;
+            width: 350px;
+            height: auto;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        
+        .iphone-real-image {
+            width: 100%;
+            height: auto;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 60px rgba(255,107,107,0.4),
+                0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .iphone-real-image:hover {
+            transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+            box-shadow: 
+                0 30px 80px rgba(255,107,107,0.6),
+                0 15px 40px rgba(0,0,0,0.4),
+                0 0 30px rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .iphone-real-showcase {
+                width: 280px;
+            }
+            
+            .iphone-real-image {
+                max-width: 280px;
+            }
+        }
+        
+        .iphone-showcase {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 
+                0 0 50px rgba(255,107,107,0.3),
+                inset 0 0 20px rgba(255,255,255,0.1);
+        }
+        
+        .iphone-back {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 50%, #000 100%);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #3a3a3c;
+        }
+        
+        .camera-module {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1c1c1e 0%, #000 100%);
+            border-radius: 20px;
+            border: 1px solid #3a3a3c;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 8px;
+            gap: 4px;
+        }
+        
+        .camera-lens {
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle, #000 30%, #1a1a1a 70%, #333 100%);
+            border-radius: 50%;
+            border: 2px solid #444;
+            position: relative;
+        }
+        
+        .camera-lens::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #000 0%, #222 100%);
+            border-radius: 50%;
+        }
+        
+        .apple-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: #666;
+            opacity: 0.8;
+        }
+        
+        .live-winners {
+            background: linear-gradient(135deg, rgba(0,255,0,0.15) 0%, rgba(0,200,0,0.15) 100%);
+            border: 2px solid rgba(0,255,0,0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,255,0,0.3);
+        }
+        
+        .winners-scroll {
+            animation: scroll-up 15s linear infinite;
+            padding: 20px 0;
+        }
+        
+        @keyframes scroll-up {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        
+        .winner-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(0,255,0,0.2);
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 2px;
+        }
+        
+        .winner-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .winner-card {
+            background: linear-gradient(135deg, rgba(76,175,80,0.2) 0%, rgba(139,195,74,0.2) 100%);
+            border: 1px solid rgba(76,175,80,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .winner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76,175,80,0.2);
+        }
+        
+        /* CTA Button Styles */
+        /* Winners Ticker Styles */
+        .winners-ticker-container {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(255, 217, 61, 0.9));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 999;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .winners-ticker {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: scroll-left 30s linear infinite;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .live-indicator-small {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        .live-dot-small {
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1s infinite;
+        }
+
+        .winner-item {
+            margin-right: 40px;
+            font-size: 14px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .winners-ticker-container {
+                top: 60px;
+                height: 35px;
+            }
+            
+            .winner-item {
+                font-size: 12px;
+                margin-right: 30px;
+            }
+        }
+
+        /* Adjust header padding for ticker */
+        #home {
+            padding-top: 150px !important;
+        }
+
+        @media (max-width: 768px) {
+            #home {
+                padding-top: 135px !important;
+            }
+        }
+
+        /* Smooth scrolling offset adjustment */
+        section {
+            scroll-margin-top: 110px;
+        }
+
+        .nav-links a.active {
+            color: #ffd93d;
+            text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+        }
+
+        /* Mobile Navigation */
+        .nav-menu.active .nav-links {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+        }
+
+        .nav-menu.active .nav-links li {
+            margin: 10px 0;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-logo {
+                font-size: 18px;
+            }
+        }
+
+        /* Smooth scrolling offset for fixed nav */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fab1a0);
+            background-size: 300% 300%;
+            animation: rainbow-gradient 3s ease infinite;
+            color: #000;
+            font-weight: 900;
+            font-size: 1.5rem;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            border: 3px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6);
+            animation: rainbow-gradient 1s ease infinite, pulse-glow 1s ease infinite;
+        }
+        
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        @keyframes rainbow-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6),
+                           0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            50% { 
+                box-shadow: 0 25px 50px rgba(255, 107, 107, 0.8),
+                           0 0 0 10px rgba(255, 255, 255, 0);
+            }
+        }
+        
+        /* Navigation Menu Styles */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .nav-links a.active {
+            background: linear-gradient(135deg, #ffd93d, #6bcf7f);
+            color: #000;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">СУПЕР ЛОТЕРЕЯ</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#prize">Главный приз</a></li>
+                <li><a href="#subscription">Подписка</a></li>
+                <li><a href="#prizes">Призы</a></li>
+                <li><a href="#winners">Победители</a></li>
+                <li><a href="#live-feed">Live лента</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Live Winners Feed - Moved under navigation -->
+    <div class="winners-ticker-container">
+        <div class="winners-ticker">
+            <div class="ticker-content" id="tickerContent">
+                <span class="live-indicator-small">
+                    <span class="live-dot-small"></span>
+                    🔴 LIVE:
+                </span>
+                <span class="winner-item">Анна С. выиграла AirPods Pro!</span>
+                <span class="winner-item">Максим К. получил PlayStation 5!</span>
+                <span class="winner-item">Елена В. выиграла iPhone 15!</span>
+                <span class="winner-item">Дмитрий Р. получил MacBook Air!</span>
+                <span class="winner-item">Ольга М. выиграла Apple Watch!</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header id="home" class="text-center py-8 relative z-10" style="padding-top: 120px;">
+        <div class="container mx-auto px-4">
+            <h1 class="text-6xl md:text-8xl font-black gradient-text mb-4 animate__animated animate__fadeInDown">
+                СУПЕР ЛОТЕРЕЯ
+            </h1>
+            <p class="text-2xl md:text-3xl text-white font-bold animate__animated animate__fadeInUp animate__delay-1s mb-8">
+                Оформи подписку за <span class="text-yellow-400 text-4xl">1₽</span> и выиграй iPhone 16 Pro!
+            </p>
+            
+            <!-- CTA Button -->
+            <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#subscription" class="cta-button inline-block">
+                    ОФОРМИТЬ ПОДПИСКУ ЗА 1₽
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Prize Section -->
+    <section id="prize" class="py-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-black text-white mb-6 animate__animated animate__pulse animate__infinite">
+                    ГЛАВНЫЙ ПРИЗ
+                </h2>
+                <div class="iphone-real-showcase floating mx-auto mb-8" data-aos="zoom-in">
+                    <img src="iphone.png" 
+                         alt="iPhone 16 Pro" 
+                         class="iphone-real-image">
+                </div>
+                <div class="text-4xl font-black text-yellow-400 mb-4">
+                    iPhone 16 Pro 256GB
+                </div>
+                <div class="text-2xl text-gray-300 mb-8">
+                    Стоимость: <span class="text-white font-bold">150,000₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section id="countdown" class="py-12 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h3 class="text-3xl font-bold text-center text-white mb-8">
+                    ⏰ До окончания акции осталось:
+                </h3>
+                <div class="countdown-timer">
+                    <div class="flex justify-center items-center space-x-4">
+                        <div class="text-center">
+                            <div class="timer-digit" id="hours">23</div>
+                            <div class="text-white text-sm mt-2">ЧАСОВ</div>
+                        </div>
+                        <div class="text-white text-4xl font-bold">:</div>
+                        <div class="text-center">
+                            <div class="timer-digit" id="minutes">59</div>
+                            <div class="text-white text-sm mt-2">МИНУТ</div>
+                        </div>
+                        <div class="text-white text-4xl font-bold">:</div>
+                        <div class="text-center">
+                            <div class="timer-digit" id="seconds">45</div>
+                            <div class="text-white text-sm mt-2">СЕКУНД</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section id="subscription" class="py-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-5xl font-black text-white mb-8">
+                    ШАНС НА IPHONE ЗА 1₽
+                </h2>
+                <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-lg rounded-3xl p-8 border border-purple-500/30 mb-12">
+                    <div class="text-6xl mb-6">⭐</div>
+                    <h3 class="text-3xl font-bold text-white mb-4">
+                        Как участвовать в розыгрыше?
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="prize-card p-6">
+                            <div class="text-4xl mb-4">1️⃣</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Оформи подписку</h4>
+                            <p class="text-gray-300">Всего за 1₽ получи доступ к розыгрышу</p>
+                        </div>
+                        <div class="prize-card p-6">
+                            <div class="text-4xl mb-4">2️⃣</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Получи доступ к аналитике</h4>
+                            <p class="text-gray-300">Автоматически участвуй в розыгрыше</p>
+                        </div>
+                        <div class="prize-card p-6">
+                            <div class="text-4xl mb-4">3️⃣</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Выиграй приз!</h4>
+                            <p class="text-gray-300">iPhone 16 Pro может стать твоим!</p>
+                        </div>
+                    </div>
+                    
+                    <button class="subscription-btn neon-glow animate__animated animate__pulse animate__infinite" id="subscribeBtn">
+                        🚀 ОФОРМИТЬ ПОДПИСКУ ЗА 1₽ 🚀
+                    </button>
+                    
+                    <div class="mt-6 text-sm text-gray-400">
+                        * Подписка автоматически продлевается. Отменить можно в любой момент.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Prizes -->
+    <section id="prizes" class="py-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-black text-center text-white mb-12">
+                ДРУГИЕ КРУТЫЕ ПРИЗЫ
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="prize-card p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl mb-4">💻</div>
+                    <h3 class="text-xl font-bold text-white mb-2">MacBook Air</h3>
+                    <p class="text-gray-300 mb-4">M2 чип, 256GB</p>
+                    <div class="text-2xl font-bold text-yellow-400">120,000₽</div>
+                </div>
+                <div class="prize-card p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl mb-4">🎮</div>
+                    <h3 class="text-xl font-bold text-white mb-2">PlayStation 5</h3>
+                    <p class="text-gray-300 mb-4">Slim версия</p>
+                    <div class="text-2xl font-bold text-yellow-400">55,000₽</div>
+                </div>
+                <div class="prize-card p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl mb-4">⌚</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Apple Watch</h3>
+                    <p class="text-gray-300 mb-4">Series 9, 45mm</p>
+                    <div class="text-2xl font-bold text-yellow-400">45,000₽</div>
+                </div>
+                <div class="prize-card p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl mb-4">🎧</div>
+                    <h3 class="text-xl font-bold text-white mb-2">AirPods Pro</h3>
+                    <p class="text-gray-300 mb-4">2-го поколения</p>
+                    <div class="text-2xl font-bold text-yellow-400">25,000₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winners Section -->
+    <section id="winners" class="py-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-black text-center text-white mb-12">
+                НЕДАВНИЕ ПОБЕДИТЕЛИ
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="winner-card text-center" data-aos="fade-up">
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Алексей М.</h3>
+                    <p class="text-green-400 font-bold mb-2">Выиграл iPhone 15 Pro</p>
+                    <p class="text-gray-300 text-sm">"Не верил до последнего! Спасибо!"</p>
+                    <div class="text-xs text-gray-500 mt-2">2 дня назад</div>
+                </div>
+                <div class="winner-card text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Мария К.</h3>
+                    <p class="text-green-400 font-bold mb-2">Выиграла MacBook Air</p>
+                    <p class="text-gray-300 text-sm">"Лучший день в моей жизни!"</p>
+                    <div class="text-xs text-gray-500 mt-2">5 дней назад</div>
+                </div>
+                <div class="winner-card text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Дмитрий П.</h3>
+                    <p class="text-green-400 font-bold mb-2">Выиграл PlayStation 5</p>
+                    <p class="text-gray-300 text-sm">"Всего за 1 рубль! Невероятно!"</p>
+                    <div class="text-xs text-gray-500 mt-2">1 неделю назад</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="bg-gradient-to-r from-red-900/50 to-orange-900/50 backdrop-blur-lg rounded-3xl p-12 border border-red-500/30">
+                    <div class="text-6xl mb-6">⚡</div>
+                    <h2 class="text-4xl font-black text-white mb-6">
+                        НЕ УПУСТИ СВОЙ ШАНС!
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Всего за 1₽ ты можешь стать обладателем iPhone 16 Pro стоимостью 150,000₽!
+                    </p>
+                    <button class="subscription-btn neon-glow animate__animated animate__heartBeat animate__infinite" id="subscribeBtn2">
+                        УЧАСТВОВАТЬ СЕЙЧАС ЗА 1₽
+                    </button>
+                    <div class="mt-6 text-yellow-400 font-bold text-lg">
+                        Осталось мест: 47 из 1000
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-400 relative z-10">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Супер Лотерея. Все права защищены.</p>
+            <p class="text-sm mt-2">Участие в лотерее с 18 лет. Играйте ответственно.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Feather icons
+        feather.replace();
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const distance = tomorrow.getTime() - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Live Winners Feed
+        const winners = [
+            { name: 'Александр К.', prize: 'iPhone 16 Pro', city: 'Москва', avatar: '👨' },
+            { name: 'Елена М.', prize: 'MacBook Air', city: 'СПб', avatar: '👩' },
+            { name: 'Дмитрий В.', prize: 'PlayStation 5', city: 'Казань', avatar: '👨' },
+            { name: 'Анна С.', prize: 'Apple Watch', city: 'Екатеринбург', avatar: '👩' },
+            { name: 'Михаил Р.', prize: 'AirPods Pro', city: 'Новосибирск', avatar: '👨' },
+            { name: 'Ольга Н.', prize: 'iPhone 16 Pro', city: 'Ростов', avatar: '👩' },
+            { name: 'Сергей Л.', prize: 'MacBook Air', city: 'Уфа', avatar: '👨' },
+            { name: 'Мария Т.', prize: 'PlayStation 5', city: 'Волгоград', avatar: '👩' },
+            { name: 'Андрей Ж.', prize: 'Apple Watch', city: 'Краснодар', avatar: '👨' },
+            { name: 'Татьяна И.', prize: 'AirPods Pro', city: 'Самара', avatar: '👩' },
+            { name: 'Владимир П.', prize: 'iPhone 16 Pro', city: 'Омск', avatar: '👨' },
+            { name: 'Светлана Б.', prize: 'MacBook Air', city: 'Челябинск', avatar: '👩' }
+        ];
+
+        function createWinnerItem(winner) {
+            const timeAgo = Math.floor(Math.random() * 30) + 1;
+            return `
+                <div class="winner-item">
+                    <div class="winner-avatar">${winner.avatar}</div>
+                    <div class="flex-1">
+                        <div class="text-white font-bold">${winner.name}</div>
+                        <div class="text-green-400 font-semibold">${winner.prize}</div>
+                        <div class="text-gray-400 text-sm">${winner.city} • ${timeAgo} мин назад</div>
+                    </div>
+                    <div class="text-yellow-400 font-bold">🎉</div>
+                </div>
+            `;
+        }
+
+        function initLiveWinners() {
+            const winnersContainer = document.getElementById('winnersScroll');
+            if (!winnersContainer) {
+                console.log('Winners container not found - using ticker instead');
+                // Try to find the ticker container instead
+                const tickerContainer = document.querySelector('.winners-scroll');
+                if (tickerContainer) {
+                    // Create initial winners list for ticker
+                    const shuffledWinners = [...winners].sort(() => Math.random() - 0.5);
+                    const winnersHTML = shuffledWinners.concat(shuffledWinners).map(createWinnerItem).join('');
+                    tickerContainer.innerHTML = winnersHTML;
+
+                    // Add new winner every 2-4 seconds
+                    setInterval(() => {
+                        const randomWinner = winners[Math.floor(Math.random() * winners.length)];
+                        const newWinnerHTML = createWinnerItem(randomWinner);
+                        tickerContainer.insertAdjacentHTML('afterbegin', newWinnerHTML);
+                        
+                        // Remove old winners to prevent infinite growth
+                        const items = tickerContainer.querySelectorAll('.winner-item');
+                        if (items.length > 20) {
+                            items[items.length - 1].remove();
+                        }
+                    }, Math.random() * 2000 + 2000); // 2-4 seconds
+                }
+                return;
+            }
+            
+            // Create initial winners list (duplicate for seamless scroll)
+            const shuffledWinners = [...winners].sort(() => Math.random() - 0.5);
+            const winnersHTML = shuffledWinners.concat(shuffledWinners).map(createWinnerItem).join('');
+            winnersContainer.innerHTML = winnersHTML;
+
+            // Add new winner every 2-4 seconds
+            setInterval(() => {
+                const randomWinner = winners[Math.floor(Math.random() * winners.length)];
+                const newWinnerHTML = createWinnerItem(randomWinner);
+                winnersContainer.insertAdjacentHTML('afterbegin', newWinnerHTML);
+                
+                // Remove old winners to prevent infinite growth
+                const items = winnersContainer.querySelectorAll('.winner-item');
+                if (items.length > 20) {
+                    items[items.length - 1].remove();
+                }
+            }, Math.random() * 2000 + 2000); // 2-4 seconds
+        }
+
+        // Initialize live winners when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initLiveWinners();
+        });
+        
+        // Also initialize immediately in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLiveWinners);
+        } else {
+            initLiveWinners();
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Highlight active nav item on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.getElementById('particles').appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        setInterval(createParticle, 300);
+
+        // Subscription button handlers
+        function handleSubscription() {
+            // Redirect to the subscription page
+            window.open('https://gotowin.ru/stream/fisrtpotok?promo=EASY100ORUB', '_blank');
+        }
+
+        document.getElementById('subscribeBtn').addEventListener('click', handleSubscription);
+        document.getElementById('subscribeBtn2').addEventListener('click', handleSubscription);
+
+        // Add some dynamic effects
+        setInterval(() => {
+            const buttons = document.querySelectorAll('.subscription-btn');
+            buttons.forEach(btn => {
+                btn.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 200);
+            });
+        }, 3000);
+
+        // Random winner notifications
+        const winnerNotifications = [
+            'Анна С. выиграла AirPods Pro!',
+            'Максим Р. выиграл Apple Watch!',
+            'Елена В. выиграла MacBook Air!',
+            'Игорь К. выиграл PlayStation 5!'
+        ];
+
+        function showWinnerNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'winner-notification';
+            
+            // Create notification content with enhanced design
+            notification.innerHTML = `
+                <div class="notification-icon">🎉</div>
+                <div class="notification-content">
+                    <div class="notification-title">НОВЫЙ ПОБЕДИТЕЛЬ!</div>
+                    <div class="notification-text">${winnerNotifications[Math.floor(Math.random() * winnerNotifications.length)]}</div>
+                </div>
+                <div class="notification-sparkles">✨</div>
+            `;
+            
+            document.body.appendChild(notification);
+
+            // Remove notification after animation
+            setTimeout(() => {
+                notification.classList.add('notification-exit');
+                setTimeout(() => notification.remove(), 600);
+            }, 5000);
+        }
+
+        // Show winner notification every 10-15 seconds
+        setInterval(showWinnerNotification, Math.random() * 5000 + 10000);
+
+        // Add CSS for enhanced notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            .winner-notification {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f);
+                background-size: 200% 200%;
+                color: white;
+                padding: 20px;
+                border-radius: 20px;
+                font-weight: bold;
+                z-index: 1000;
+                animation: slideInBottom 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                          gradientShift 3s ease-in-out infinite,
+                          pulse 2s ease-in-out infinite;
+                box-shadow: 
+                    0 10px 30px rgba(255,107,107,0.4),
+                    0 0 20px rgba(255,217,61,0.3),
+                    inset 0 1px 0 rgba(255,255,255,0.3);
+                border: 2px solid rgba(255,255,255,0.2);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                max-width: 350px;
+                min-width: 280px;
+                transform-origin: bottom right;
+            }
+            
+            .winner-notification.notification-exit {
+                animation: slideOutBottom 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+            }
+            
+            .notification-icon {
+                font-size: 2.5rem;
+                animation: bounce 1s ease-in-out infinite;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+            }
+            
+            .notification-content {
+                flex: 1;
+            }
+            
+            .notification-title {
+                font-size: 0.9rem;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 5px;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                color: #fff;
+            }
+            
+            .notification-text {
+                font-size: 1.1rem;
+                font-weight: 600;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                line-height: 1.3;
+            }
+            
+            .notification-sparkles {
+                font-size: 1.5rem;
+                animation: sparkle 1.5s ease-in-out infinite;
+                filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+            }
+            
+            @keyframes slideInBottom {
+                from { 
+                    transform: translateY(100%) scale(0.8) rotate(10deg); 
+                    opacity: 0; 
+                }
+                to { 
+                    transform: translateY(0) scale(1) rotate(0deg); 
+                    opacity: 1; 
+                }
+            }
+            
+            @keyframes slideOutBottom {
+                from { 
+                    transform: translateY(0) scale(1) rotate(0deg); 
+                    opacity: 1; 
+                }
+                to { 
+                    transform: translateY(100%) scale(0.8) rotate(-10deg); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(0deg); }
+                40% { transform: translateY(-8px) rotate(-5deg); }
+                60% { transform: translateY(-4px) rotate(5deg); }
+            }
+            
+            @keyframes sparkle {
+                0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+                25% { transform: scale(1.2) rotate(90deg); opacity: 0.8; }
+                50% { transform: scale(0.8) rotate(180deg); opacity: 1; }
+                75% { transform: scale(1.1) rotate(270deg); opacity: 0.9; }
+            }
+            
+            @media (max-width: 768px) {
+                .winner-notification {
+                    bottom: 20px;
+                    right: 20px;
+                    left: 20px;
+                    max-width: none;
+                    min-width: auto;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
